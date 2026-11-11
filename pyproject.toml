@@ -1,0 +1,31 @@
+[project]
+name = "tinyagent"
+version = "0.1.0"
+description = "Building TinyAgent by hand while reading 'An Illustrated Guide to AI Agents'"
+requires-python = ">=3.12"
+dependencies = [
+  # The authors' package: display helpers (TrajectoryViewer, DiffViewer) and the
+  # per-chapter reference code that tests are validated against.
+  "illustrated-agents[jupyter]",
+]
+
+[tool.uv.sources]
+# The reference clone, untouched, next to this repo. `git pull` there updates it here.
+illustrated-agents = { path = "../An-Illustrated-Guide-To-AI-Agents", editable = true }
+
+[dependency-groups]
+dev = ["pytest>=8", "nbclient"]
+
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+  "chapter(n): test belongs to book chapter n",
+  "superseded(n): behaviour replaced in chapter n; skipped by --chapter >= n",
+]

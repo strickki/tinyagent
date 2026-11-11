@@ -1,0 +1,51 @@
+{
+ "drop": [
+  1,
+  2,
+  3
+ ],
+ "insert_after": {
+  "0": [
+   {
+    "type": "markdown",
+    "source": "> ✏️ **Workbook copy.** The code you build lives in `src/my_agent/`. A **✏️ YOUR TURN** cell names the file and stub to fill in; the next cell imports *your* version.\n> 📖 cells render the **authors'** solution (annotations, diffs) — run them when you want to peek or compare.\n>\n> Check yourself any time: `uv run pytest --chapter 1` (from the repo root), or the cell at the bottom."
+   },
+   {
+    "type": "code",
+    "source": "# Re-import your edits to src/my_agent automatically\n%load_ext autoreload\n%autoreload 2"
+   }
+  ],
+  "17": [
+   {
+    "type": "markdown",
+    "source": "## ✅ Check & compare\n\nRun the tests for everything up to this chapter, then diff your code against the authors'."
+   },
+   {
+    "type": "code",
+    "source": "!cd ../.. && uv run pytest --chapter 1 -q"
+   },
+   {
+    "type": "code",
+    "source": "# 📖 authors' version (left) vs yours (right)\nfrom illustrated_agents.utils import DiffViewer\nfrom illustrated_agents.chapters import ch1\nimport my_agent.agent as mine\n\nDiffViewer(ch1.TinyAgent, mine.TinyAgent, \"authors' ch1\", \"mine\")"
+   }
+  ]
+ },
+ "replace": {
+  "8": [
+   {
+    "type": "markdown",
+    "source": "**✏️ YOUR TURN** — build the `TinyAgent` skeleton in **`src/my_agent/agent.py`** (the `TODO(ch1)` markers). The book's listing is the spec; `tests/test_ch01_agent.py` checks it."
+   },
+   {
+    "type": "code",
+    "source": "from my_agent.agent import TinyAgent"
+   }
+  ]
+ },
+ "rewrite": [
+  [
+   "from illustrated_agents.chapters.ch1 import agent_annotated",
+   "# 📖 authors' solution\nfrom illustrated_agents.chapters.ch1 import agent_annotated"
+  ]
+ ]
+}

@@ -1,0 +1,100 @@
+{
+ "drop": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "insert_after": {
+  "0": [
+   {
+    "type": "markdown",
+    "source": "> ✏️ **Workbook copy.** The code you build lives in `src/my_agent/`. A **✏️ YOUR TURN** cell names the file and stub to fill in; the next cell imports *your* version.\n> 📖 cells render the **authors'** solution (annotations, diffs) — run them when you want to peek or compare.\n>\n> Check yourself any time: `uv run pytest --chapter 2` (from the repo root), or the cell at the bottom."
+   },
+   {
+    "type": "code",
+    "source": "# Re-import your edits to src/my_agent automatically\n%load_ext autoreload\n%autoreload 2"
+   }
+  ],
+  "45": [
+   {
+    "type": "markdown",
+    "source": "## ✅ Check & compare\n\nRun the tests for everything up to this chapter, then diff your code against the authors'."
+   },
+   {
+    "type": "code",
+    "source": "!cd ../.. && uv run pytest --chapter 2 -q"
+   },
+   {
+    "type": "code",
+    "source": "# 📖 authors' version (left) vs yours (right)\nfrom illustrated_agents.utils import DiffViewer\nfrom illustrated_agents.chapters import ch2\nimport my_agent.agent, my_agent.llm, my_agent.trajectory\n\ndisplay(DiffViewer(ch2.LLM, my_agent.llm.LLM, \"authors' LLM\", \"my LLM\"))\ndisplay(DiffViewer(ch2.Trajectory, my_agent.trajectory.Trajectory, \"authors' Trajectory\", \"my Trajectory\"))\ndisplay(DiffViewer(ch2.TinyAgent, my_agent.agent.TinyAgent, \"authors' ch2 TinyAgent\", \"my TinyAgent\"))"
+   }
+  ]
+ },
+ "replace": {
+  "14": [
+   {
+    "type": "markdown",
+    "source": "**✏️ YOUR TURN** — give `Response` its fields in **`src/my_agent/llm.py`**."
+   },
+   {
+    "type": "code",
+    "source": "from my_agent.llm import Response\n\nResponse()"
+   }
+  ],
+  "16": [
+   {
+    "type": "markdown",
+    "source": "**✏️ YOUR TURN** — implement `LLM.__init__` and `LLM.generate` in **`src/my_agent/llm.py`**. The tests fake the server, so `uv run pytest --chapter 2 -k llm` works with no model running."
+   },
+   {
+    "type": "code",
+    "source": "from my_agent.llm import LLM"
+   }
+  ],
+  "25": [
+   {
+    "type": "markdown",
+    "source": "**✏️ YOUR TURN** — give `Step` its fields in **`src/my_agent/trajectory.py`**."
+   },
+   {
+    "type": "code",
+    "source": "from my_agent.trajectory import Step\n\nStep()"
+   }
+  ],
+  "28": [
+   {
+    "type": "markdown",
+    "source": "**✏️ YOUR TURN** — implement `Trajectory` in **`src/my_agent/trajectory.py`**."
+   },
+   {
+    "type": "code",
+    "source": "from my_agent.trajectory import Trajectory"
+   }
+  ],
+  "32": [
+   {
+    "type": "markdown",
+    "source": "**✏️ YOUR TURN** — apply the Chapter 2 changes to **`src/my_agent/agent.py`** (they're listed in the `TinyAgent` docstring; the 📖 diff below shows the authors' version)."
+   },
+   {
+    "type": "code",
+    "source": "from my_agent.agent import TinyAgent"
+   }
+  ]
+ },
+ "rewrite": [
+  [
+   "from illustrated_agents.chapters.ch2 import llm_annotated",
+   "# 📖 authors' solution\nfrom illustrated_agents.chapters.ch2 import llm_annotated"
+  ],
+  [
+   "from illustrated_agents.chapters.ch2 import trajectory_add_annotated",
+   "# 📖 authors' solution\nfrom illustrated_agents.chapters.ch2 import trajectory_add_annotated"
+  ],
+  [
+   "from illustrated_agents.chapters.ch2 import tinyagents_diff",
+   "# 📖 authors' solution\nfrom illustrated_agents.chapters.ch2 import tinyagents_diff"
+  ]
+ ]
+}
